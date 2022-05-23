@@ -7,15 +7,36 @@ public class WantedScreen : MonoBehaviour
 {
     public static WantedScreen instance;
     [SerializeField]
-    public GameObject spawnPosition;
-    public GameObject seBuscan;
+    GameObject spawnPosition;
+    [SerializeField]
+    GameObject seBuscan;
+    
+    public GameObject buscadoPrefab;
 
-    public float tiempo = 5f;
+    float tiempo = 5f;
     public TextMeshProUGUI textoTiempo;
+
+    private void Awake()
+    {
+        if(WantedScreen.instance == null)
+        {
+            WantedScreen.instance = this;
+        }
+
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        
+    }
     private void Update()
     {
         
-        if(tiempo < 5 && tiempo >= 0)
+        if(tiempo < 5 && tiempo > 1)
         {
             Mostrar();
             
@@ -24,7 +45,6 @@ public class WantedScreen : MonoBehaviour
         else
         {
             Cerrar();
-            
         }
 
         tiempo -= Time.deltaTime;
@@ -38,5 +58,14 @@ public class WantedScreen : MonoBehaviour
     public void Cerrar()
     {
         seBuscan.SetActive(false);
+    }
+
+    public void PositionOfCharacters()
+    {
+        GameObject charac = GameController.instance.RandomCharacters();
+        charac.transform.parent = spawnPosition.transform;
+        charac.transform.localPosition = Vector3.zero;
+        charac.transform.localScale = Vector3.one * 200f;
+        charac.transform.LookAt(Camera.main.transform);
     }
 }

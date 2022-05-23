@@ -9,4 +9,9 @@ public class LoadScene : MonoBehaviour
     {
         SceneManager.LoadScene(Random.Range(1, 3));
     }
+
+    public void CerrarJuego()
+    {
+        Application.Quit();
+    }
 }
