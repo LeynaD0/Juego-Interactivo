@@ -9,18 +9,21 @@ public class WantedScreen : MonoBehaviour
     [SerializeField]
     GameObject spawnPosition;
     [SerializeField]
-    GameObject seBuscan;
+    GameObject canvasSeBuscan;
+    [SerializeField]
+    GameObject canvasHud;
     
-    public GameObject buscadoPrefab;
+    
 
     float tiempo = 5f;
     public TextMeshProUGUI textoTiempo;
 
-    private void Awake()
+    private void Start()
     {
         if(WantedScreen.instance == null)
         {
             WantedScreen.instance = this;
+            Mostrar();
         }
 
         else
@@ -28,36 +31,30 @@ public class WantedScreen : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void Start()
-    {
-        
-    }
     private void Update()
     {
         
-        if(tiempo < 5 && tiempo > 1)
-        {
-            Mostrar();
-            
-        }
-
-        else
+        if(tiempo < 0.0f )
         {
             Cerrar();
+
         }
 
+        
         tiempo -= Time.deltaTime;
         textoTiempo.text = tiempo.ToString("f0");
     }
     public void Mostrar()
     {
-        seBuscan.SetActive(true);
+        canvasSeBuscan.SetActive(true);
+        PositionOfCharacters();
+        canvasHud.SetActive(false);
     }
 
     public void Cerrar()
     {
-        seBuscan.SetActive(false);
+        canvasSeBuscan.SetActive(false);
+        canvasHud.SetActive(true);
     }
 
     public void PositionOfCharacters()

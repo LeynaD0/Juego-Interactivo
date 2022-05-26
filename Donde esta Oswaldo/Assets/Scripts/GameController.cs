@@ -7,9 +7,9 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
     public GameObject[] personajesDisponibles;
-    public int Personajes;
+    public int iChar;
 
-    private void Awake()
+    private void Start()
     {
         if(GameController.instance == null)
         {
@@ -22,10 +22,7 @@ public class GameController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Start()
-    {
-        
-    }
+    
 
     private void Update()
     {
@@ -37,8 +34,8 @@ public class GameController : MonoBehaviour
 
     public GameObject RandomCharacters()
     {
-        Personajes = Random.Range(0, personajesDisponibles.Length);
-        return Instantiate(personajesDisponibles[Personajes]);
+        iChar = Random.Range(0, personajesDisponibles.Length);
+        return Instantiate(personajesDisponibles[iChar]);
     }
 
     
