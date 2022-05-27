@@ -4,19 +4,42 @@ using UnityEngine;
 
 public class ChangeCamera : MonoBehaviour
 {
-    public GameObject livingRoomCamera;
-    public GameObject corridorCamera;
-    
+    public GameObject[] Cameras;  //Una array de las camaras
+    public int index;  
 
-    public void LivingRoom()
+
+    private void Update()
     {
-        livingRoomCamera.SetActive(true);
-        corridorCamera.SetActive(false);
+        for (int i = 0; i < Cameras.Length; i++)  //Un "for" para que vaya sumando el "i"
+        {
+            if(i == index)
+            {
+                Cameras[i].SetActive(true);
+            }
+            else
+            {
+                Cameras[i].SetActive(false);
+            }
+        }
     }
 
-    public void Corridor()
+    public void RightButtom()
     {
-        livingRoomCamera.SetActive(false);
-        corridorCamera.SetActive(true);
+        index++;
+
+        if(index > 1)
+        {
+            index = 0;
+        }
+    }
+
+    public void LeftButtom()
+    {
+        index--;
+
+        if(index < 0)
+        {
+            index = 1;
+        }
     }
 }

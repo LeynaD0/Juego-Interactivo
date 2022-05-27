@@ -38,5 +38,9 @@ public class GameController : MonoBehaviour
         return Instantiate(personajesDisponibles[iChar]);
     }
 
+    public GameObject RandomCharactersInHidePoints()
+    {
+        
+    }
     
 }
