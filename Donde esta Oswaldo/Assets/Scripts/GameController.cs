@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour
         int hide = HidePoints.instance.RandomHidePoints();
         personajeBuscado.transform.parent = HidePoints.instance.hidePoints[hide].transform;
         personajeBuscado.transform.localPosition = Vector3.zero;
+        personajeBuscado.transform.localScale = Vector3.one;
         personajeBuscado.transform.LookAt(Camera.main.transform);
 
         OtherCharacters();
