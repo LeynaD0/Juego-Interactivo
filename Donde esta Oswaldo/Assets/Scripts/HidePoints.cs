@@ -44,15 +44,4 @@ public class HidePoints : MonoBehaviour
         return cantidadDeHidePoints;
         
     }
-
-    public void OtherCharacters()
-    {
-        for(int i = 0; i < hidePoints.Length; i++)
-        {
-            GameController.instance.personajes[i] = GameController.instance.RandomCharactersLevel();
-            GameController.instance.personajes[i].transform.parent = hidePoints[RandomHidePoints()].transform;
-            GameController.instance.personajes[i].transform.localPosition = Vector3.zero;
-            GameController.instance.personajes[i].transform.LookAt(Camera.main.transform);
-        }
-    }
 }

@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public GameObject[] personajes;
     public int iChar;
     public GameObject personajeBuscado;
+    public int nivel = 1;
 
     private void Start()
     {
@@ -62,7 +63,18 @@ public class GameController : MonoBehaviour
         personajeBuscado.transform.localPosition = Vector3.zero;
         personajeBuscado.transform.LookAt(Camera.main.transform);
 
-        HidePoints.instance.OtherCharacters();
+        OtherCharacters();
     }
-    
+
+    public void OtherCharacters()
+    {
+        for (int i = 0; i < nivel*5 -1; i++)
+        {
+            GameController.instance.personajes[i] = GameController.instance.RandomCharactersLevel();
+            GameController.instance.personajes[i].transform.parent = HidePoints.instance.hidePoints[HidePoints.instance.RandomHidePoints()].transform;
+            GameController.instance.personajes[i].transform.localPosition = Vector3.zero;
+            GameController.instance.personajes[i].transform.LookAt(Camera.main.transform);
+        }
+    }
+
 }

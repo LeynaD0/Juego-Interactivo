@@ -48,13 +48,20 @@ public class WantedScreen : MonoBehaviour
     {
         canvasSeBuscan.SetActive(true);
         PositionOfCharacters();
-        canvasHud.SetActive(false);
+        if (canvasHud != null) 
+        {
+            canvasHud.SetActive(false);
+        }
     }
 
     public void Cerrar()  //Condición que desactiva el canvasSeBuscan y activa el  HUD.
     {
         canvasSeBuscan.SetActive(false);
-        canvasHud.SetActive(true);
+        if (canvasHud != null)
+        {
+            canvasHud.SetActive(true);
+        }
+        
         GameController.instance.FullLevel();
     }
 
