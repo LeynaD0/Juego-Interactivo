@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Project
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -45,10 +45,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 678, y: 492}
+  m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 43
+  controlID: 60
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -96,8 +96,8 @@ MonoBehaviour:
     y: 0
     width: 239
     height: 603
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -226,10 +226,10 @@ MonoBehaviour:
     y: 0
     width: 1345
     height: 947
-  m_MinSize: {x: 402, y: 492}
+  m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 17
+  controlID: 65
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -251,10 +251,10 @@ MonoBehaviour:
     y: 0
     width: 1345
     height: 603
-  m_MinSize: {x: 402, y: 221}
-  m_MaxSize: {x: 8002, y: 4021}
+  m_MinSize: {x: 403, y: 221}
+  m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 18
+  controlID: 66
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_PosLeft: {x: 0, y: 0}
   m_PosRight: {x: 0, y: 300}
   m_Scope: 1
-  m_SplitterFlex: 0.062135924
+  m_SplitterFlex: 0.2
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -402,23 +402,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: C:\Users\Alumnado 3D\Desktop\Todas las carpetas\Juego-Interactivo\Donde
-    esta Oswaldo
+  m_LastProjectPath: C:\Users\Daniel\Desktop\Juego-Interactivo\Donde esta Oswaldo
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 54b30000
-    m_LastClickedID: 45908
-    m_ExpandedIDs: 0000000018b3000000ca9a3b
+    m_SelectedIDs: 26b30000
+    m_LastClickedID: 45862
+    m_ExpandedIDs: 0000000016b3000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -446,7 +445,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000018b30000
+    m_ExpandedIDs: 0000000016b30000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -473,22 +472,22 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000034830000a44d000000000000b0281e00
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Ciudad
-      m_OriginalName: Ciudad
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 45708
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 5}
     m_CreateAssetUtility:
@@ -567,23 +566,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a06e0600
-      m_LastClickedID: 421536
-      m_ExpandedIDs: 248afbffd00dfcff0ac9fcff0ed5fcffc2c1fdffb444feffa6c7feff984affff2a77ffff06fbfffff4fffffff4b70000c2660500e2390700
+      m_SelectedIDs: 4e060000
+      m_LastClickedID: 0
+      m_ExpandedIDs: cc76ffff26fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: HidePoints (1)
-        m_OriginalName: HidePoints (1)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -213852
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 
@@ -629,7 +628,7 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 5.1933937, y: 9.362384, z: -5.8797}
+    m_Target: {x: -19.556398, y: 0.0017463844, z: 16.347929}
     speed: 2
     m_Value: {x: 5.1933937, y: 9.362384, z: -5.8797}
   m_RenderMode: 0
@@ -678,11 +677,11 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.04736182, y: 0.027872236, z: -0.0013224584, w: -0.9984885}
+    m_Target: {x: 0.12181259, y: -0.47073135, z: 0.065807946, w: 0.8713479}
     speed: 2
-    m_Value: {x: -0.0473618, y: 0.027872223, z: -0.0013224578, w: -0.998488}
+    m_Value: {x: -0.04736182, y: 0.027872238, z: -0.0013224584, w: -0.9984885}
   m_Size:
-    m_Target: 2.6748698
+    m_Target: 4.8032255
     speed: 2
     m_Value: 2.6748698
   m_Ortho:
@@ -740,7 +739,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 997, y: 561}
+  m_TargetSize: {x: 1104, y: 561}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -755,8 +754,8 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -498.5
-    m_HBaseRangeMax: 498.5
+    m_HBaseRangeMin: -552
+    m_HBaseRangeMax: 552
     m_VBaseRangeMin: -280.5
     m_VBaseRangeMax: 280.5
     m_HAllowExceedBaseRangeMin: 1
