@@ -37,7 +37,7 @@ public class WantedScreen : MonoBehaviour
         if(tiempo < 0.0f )
         {
             Cerrar();
-
+            
         }
 
         
@@ -55,11 +55,12 @@ public class WantedScreen : MonoBehaviour
     {
         canvasSeBuscan.SetActive(false);
         canvasHud.SetActive(true);
+        GameController.instance.FullLevel();
     }
 
     public void PositionOfCharacters()  //Condición para que aparezca el personaje en la posición deseada.
     {
-        GameObject charac = GameController.instance.RandomCharacters();  //Llama la instancia del GameController RandomCharacters.
+        GameObject charac = GameController.instance.RandomCharactersWanted();  //Llama la instancia del GameController RandomCharacters.
         charac.transform.parent = spawnPosition.transform;               //Le dice al objeto del personaje a buscar donde va a aparecer.
         charac.transform.localPosition = Vector3.zero;                   //Le dice al objeto donde esta el personaje a buscar la posición.
         charac.transform.localScale = Vector3.one * 200f;                //Le dice al objeto del personaje a buscar el tamaño que tendrá.

@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
-    public GameObject[] personajesDisponibles;
+    public GameObject[] personajes;
     public int iChar;
+    public GameObject personajeBuscado;
 
     private void Start()
     {
@@ -32,15 +33,36 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public GameObject RandomCharacters()
+    public GameObject RandomCharactersLevel()
     {
-        iChar = Random.Range(0, personajesDisponibles.Length);
-        return Instantiate(personajesDisponibles[iChar]);
+        int cualquiera = Random.Range(0, personajes.Length);
+        while (cualquiera == iChar)
+        {
+            cualquiera = Random.Range(0, personajes.Length);
+        }
+
+        GameObject RandomChar = personajes[cualquiera];
+
+        return Instantiate(RandomChar);
     }
 
-    public GameObject RandomCharactersInHidePoints()
+    public GameObject RandomCharactersWanted()
     {
-        
+        iChar = Random.Range(0, personajes.Length);
+        personajeBuscado = personajes[iChar];
+        personajeBuscado = Instantiate(personajes[iChar]);
+
+        return personajeBuscado;
+    }
+
+    public void FullLevel()
+    {
+        int hide = HidePoints.instance.RandomHidePoints();
+        personajeBuscado.transform.parent = HidePoints.instance.hidePoints[hide].transform;
+        personajeBuscado.transform.localPosition = Vector3.zero;
+        personajeBuscado.transform.LookAt(Camera.main.transform);
+
+        HidePoints.instance.OtherCharacters();
     }
     
 }
