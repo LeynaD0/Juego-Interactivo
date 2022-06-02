@@ -975,6 +975,7 @@ GameObject:
   m_Component:
   - component: {fileID: 455626}
   - component: {fileID: 9515148}
+  - component: {fileID: 5879386083215164994}
   m_Layer: 0
   m_Name: Character_Tourist_01
   m_TagString: Personajes
@@ -1035,6 +1036,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &5879386083215164994
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123474}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.52, y: 1.81, z: 0.47}
+  m_Center: {x: 0, y: 0.99, z: 0}
 --- !u!1 &123804
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,6 +38,7 @@ public class WantedScreen : MonoBehaviour
         {
             Cerrar();
             
+            
         }
 
         
@@ -63,6 +64,7 @@ public class WantedScreen : MonoBehaviour
         }
         
         GameController.instance.FullLevel();
+        GameController.instance.isPlaying = true;
     }
 
     public void PositionOfCharacters()  //Condición para que aparezca el personaje en la posición deseada.

@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public int iChar;
     public GameObject personajeBuscado;
     public int nivel = 1;
+    public bool isPlaying = false;
 
     private void Start()
     {
@@ -23,6 +24,8 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        Raycasting();
     }
     
 
@@ -50,8 +53,11 @@ public class GameController : MonoBehaviour
     public GameObject RandomCharactersWanted()
     {
         iChar = Random.Range(0, personajes.Length);
+
         personajeBuscado = personajes[iChar];
         personajeBuscado = Instantiate(personajes[iChar]);
+
+        personajeBuscado.tag = "Buscado";
 
         return personajeBuscado;
     }
@@ -75,6 +81,39 @@ public class GameController : MonoBehaviour
             GameController.instance.personajes[i].transform.parent = HidePoints.instance.hidePoints[HidePoints.instance.RandomHidePoints()].transform;
             GameController.instance.personajes[i].transform.localPosition = Vector3.zero;
             GameController.instance.personajes[i].transform.LookAt(Camera.main.transform);
+        }
+    }
+
+    public void Raycasting()
+    {
+        if(isPlaying == true)
+        {
+            if((Input.touchCount >= 1  && Input.GetTouch(0).phase == TouchPhase.Ended) || (Input.GetMouseButtonDown(0)))
+            {
+                Vector3 pos = Input.mousePosition;
+                if( Application.platform == RuntimePlatform.Android)
+                {
+                    pos = Input.GetTouch(0).position;
+                }
+
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hitinfo;
+                if (Physics.Raycast(ray, out hitinfo))
+                {
+                    if(hitinfo.transform.tag == ("Buscado"))
+                    {
+                        Debug.Log("Encontrado");
+                        nivel++;
+                        SceneManager.LoadScene(Random.Range(1, 3));
+                        Debug.Log(nivel);
+                    }
+
+                    if (hitinfo.transform.tag == ("Relleno"))
+                    {
+                        Debug.Log("Perdiste");
+                    }
+                }
+            }
         }
     }
 
