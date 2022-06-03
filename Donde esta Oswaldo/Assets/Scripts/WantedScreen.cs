@@ -6,17 +6,18 @@ using TMPro;
 public class WantedScreen : MonoBehaviour
 {
     public static WantedScreen instance;
-    [SerializeField]
-    GameObject spawnPosition;
-    [SerializeField]
-    GameObject canvasSeBuscan;
-    [SerializeField]
-    GameObject canvasHud;
     
+    public GameObject spawnPosition;
     
+    public GameObject canvasSeBuscan;
+    
+    public GameObject canvasHud;
 
-    float tiempo = 5f;
+    
+    public float tiempo = 5f;
+
     public TextMeshProUGUI textoTiempo;
+    
 
     private void Start()
     {
@@ -38,9 +39,7 @@ public class WantedScreen : MonoBehaviour
         {
             Cerrar();
             
-            
         }
-
         
         tiempo -= Time.deltaTime;
         textoTiempo.text = tiempo.ToString("f0");
@@ -53,6 +52,7 @@ public class WantedScreen : MonoBehaviour
         {
             canvasHud.SetActive(false);
         }
+        
     }
 
     public void Cerrar()  //Condición que desactiva el canvasSeBuscan y activa el  HUD.

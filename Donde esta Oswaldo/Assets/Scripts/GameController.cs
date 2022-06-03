@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public GameObject personajeBuscado;
     public int nivel = 1;
     public bool isPlaying = false;
+    public int points = 0;
 
     private void Start()
     {
@@ -25,7 +26,7 @@ public class GameController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Raycasting();
+        RandomCharactersWanted();
     }
     
 
@@ -35,6 +36,8 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene(0);       
         }
+
+        Raycasting();
     }
 
     public GameObject RandomCharactersLevel()
@@ -86,9 +89,9 @@ public class GameController : MonoBehaviour
 
     public void Raycasting()
     {
-        if(isPlaying == true)
-        {
-            if((Input.touchCount >= 1  && Input.GetTouch(0).phase == TouchPhase.Ended) || (Input.GetMouseButtonDown(0)))
+        //if(isPlaying == true)
+        //{
+            if((Input.touchCount >= 1  && Input.GetTouch(0).phase == TouchPhase.Ended) || (Input.GetMouseButtonUp(0)))
             {
                 Vector3 pos = Input.mousePosition;
                 if( Application.platform == RuntimePlatform.Android)
@@ -104,17 +107,20 @@ public class GameController : MonoBehaviour
                     {
                         Debug.Log("Encontrado");
                         nivel++;
-                        SceneManager.LoadScene(Random.Range(1, 3));
                         Debug.Log(nivel);
+                    points = points + 100;
+                    PoPUpPoints.instance.popUpPoints.SetActive(true);
                     }
 
-                    if (hitinfo.transform.tag == ("Relleno"))
+                    if (hitinfo.transform.tag == ("Personaje"))
                     {
                         Debug.Log("Perdiste");
+                    PoPUpPoints.instance.popUpLose.SetActive(true);
+                    Contrareloj.instance.contraReloj = Contrareloj.instance.contraReloj + 10f;
                     }
                 }
             }
-        }
+        //}
     }
 
 }
