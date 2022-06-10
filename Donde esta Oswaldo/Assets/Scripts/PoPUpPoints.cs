@@ -4,9 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class PoPUpPoints : MonoBehaviour
+public class PopUpPoints : MonoBehaviour
 {
-    public static PoPUpPoints instance;
+    public static PopUpPoints instance;
 
     public TextMeshProUGUI pointsLevel;
     public TextMeshProUGUI totalPoints;
@@ -48,7 +48,7 @@ public class PoPUpPoints : MonoBehaviour
     public void Back2Menu()
     {
         SceneManager.LoadScene(0);
-        popUpPoints.SetActive(false);
+        popUpLose.SetActive(false);
 
     }
 }

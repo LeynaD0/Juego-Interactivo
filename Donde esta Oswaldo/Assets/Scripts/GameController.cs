@@ -89,8 +89,8 @@ public class GameController : MonoBehaviour
 
     public void Raycasting()
     {
-        //if(isPlaying == true)
-        //{
+        if(isPlaying == true)
+        {
             if((Input.touchCount >= 1  && Input.GetTouch(0).phase == TouchPhase.Ended) || (Input.GetMouseButtonUp(0)))
             {
                 Vector3 pos = Input.mousePosition;
@@ -106,21 +106,22 @@ public class GameController : MonoBehaviour
                     if(hitinfo.transform.tag == ("Buscado"))
                     {
                         Debug.Log("Encontrado");
-                        nivel++;
+                        //nivel++;
                         Debug.Log(nivel);
                     points = points + 100;
-                    PoPUpPoints.instance.popUpPoints.SetActive(true);
+                    Debug.Log(points);
+                    PopUpPoints.instance.popUpPoints.SetActive(true);
                     }
 
-                    if (hitinfo.transform.tag == ("Personaje"))
+                    if (hitinfo.transform.tag == ("Personajes"))
                     {
                         Debug.Log("Perdiste");
-                    PoPUpPoints.instance.popUpLose.SetActive(true);
+                    PopUpPoints.instance.popUpLose.SetActive(true);
                     Contrareloj.instance.contraReloj = Contrareloj.instance.contraReloj + 10f;
                     }
                 }
             }
-        //}
+        }
     }
 
 }

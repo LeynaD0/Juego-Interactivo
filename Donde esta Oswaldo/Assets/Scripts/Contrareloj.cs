@@ -29,9 +29,9 @@ public class Contrareloj : MonoBehaviour
             textContraReloj3.text = contraReloj.ToString("f0");
             textContraReloj4.text = contraReloj.ToString("f0");
 
-            if(contraReloj < 0.0f)
+            if(contraReloj <= 0)
             {
-                PoPUpPoints.instance.popUpLose.SetActive(true);
+                PopUpPoints.instance.popUpLose.SetActive(true);
                 WantedScreen.instance.canvasHud.SetActive(false);
             }
         }
