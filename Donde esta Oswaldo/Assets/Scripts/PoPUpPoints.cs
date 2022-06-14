@@ -4,19 +4,28 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class PopUpPoints : MonoBehaviour
+public class PoPUpPoints : MonoBehaviour
 {
-    public static PopUpPoints instance;
+    public static PoPUpPoints instance;
 
     public TextMeshProUGUI pointsLevel;
     public TextMeshProUGUI totalPoints;
 
     public GameObject popUpPoints;
     public GameObject popUpLose;
+    public GameObject popUpWin;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PoPUpPoints.instance == null)
+        {
+            PoPUpPoints.instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -30,6 +39,7 @@ public class PopUpPoints : MonoBehaviour
         GameController.instance.nivel++;
         SceneManager.LoadScene(Random.Range(1, 3));
         popUpPoints.SetActive(false);
+        popUpWin.SetActive(true);
     }
 
     public void ReloadLevelLivingRoom()

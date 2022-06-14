@@ -22,7 +22,6 @@ public class Contrareloj : MonoBehaviour
     {
         if (WantedScreen.instance.tiempo < 0.0f)
         {
-            contraReloj -= Time.deltaTime;
             textContraReloj.text = contraReloj.ToString("f0");
             textContraReloj1.text = contraReloj.ToString("f0");
             textContraReloj2.text = contraReloj.ToString("f0");
@@ -31,7 +30,7 @@ public class Contrareloj : MonoBehaviour
 
             if(contraReloj <= 0)
             {
-                PopUpPoints.instance.popUpLose.SetActive(true);
+                PoPUpPoints.instance.popUpLose.SetActive(true);
                 WantedScreen.instance.canvasHud.SetActive(false);
             }
         }

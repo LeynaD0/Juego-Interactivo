@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour
         }
 
         Raycasting();
+        
     }
 
     public GameObject RandomCharactersLevel()
@@ -71,19 +72,19 @@ public class GameController : MonoBehaviour
         personajeBuscado.transform.parent = HidePoints.instance.hidePoints[hide].transform;
         personajeBuscado.transform.localPosition = Vector3.zero;
         personajeBuscado.transform.localScale = Vector3.one;
-        personajeBuscado.transform.LookAt(Camera.main.transform);
+        personajeBuscado.transform.LookAt(Camera.current.transform);
 
         OtherCharacters();
     }
 
     public void OtherCharacters()
     {
-        for (int i = 0; i < nivel*5 -1; i++)
+        for (int i = 0; i < (nivel*5)-1; i++)
         {
             GameController.instance.personajes[i] = GameController.instance.RandomCharactersLevel();
             GameController.instance.personajes[i].transform.parent = HidePoints.instance.hidePoints[HidePoints.instance.RandomHidePoints()].transform;
             GameController.instance.personajes[i].transform.localPosition = Vector3.zero;
-            GameController.instance.personajes[i].transform.LookAt(Camera.main.transform);
+            GameController.instance.personajes[i].transform.LookAt(Camera.current.transform);
         }
     }
 
@@ -91,7 +92,8 @@ public class GameController : MonoBehaviour
     {
         if(isPlaying == true)
         {
-            if((Input.touchCount >= 1  && Input.GetTouch(0).phase == TouchPhase.Ended) || (Input.GetMouseButtonUp(0)))
+            Contrareloj.instance.contraReloj -= Time.deltaTime;
+            if ((Input.touchCount >= 1  && Input.GetTouch(0).phase == TouchPhase.Ended) || (Input.GetMouseButtonUp(0)))
             {
                 Vector3 pos = Input.mousePosition;
                 if( Application.platform == RuntimePlatform.Android)
@@ -110,13 +112,16 @@ public class GameController : MonoBehaviour
                         Debug.Log(nivel);
                     points = points + 100;
                     Debug.Log(points);
-                    PopUpPoints.instance.popUpPoints.SetActive(true);
+                    PoPUpPoints.instance.popUpPoints.SetActive(true);
+                        PoPUpPoints.instance.popUpWin.SetActive(true);
+                        PoPUpPoints.instance.popUpLose.SetActive(false);
+                        isPlaying = false;                       
                     }
 
                     if (hitinfo.transform.tag == ("Personajes"))
                     {
                         Debug.Log("Perdiste");
-                    PopUpPoints.instance.popUpLose.SetActive(true);
+                    PoPUpPoints.instance.popUpLose.SetActive(true);
                     Contrareloj.instance.contraReloj = Contrareloj.instance.contraReloj + 10f;
                     }
                 }
