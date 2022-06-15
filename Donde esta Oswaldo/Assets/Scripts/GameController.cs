@@ -6,13 +6,25 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+
+    public GameObject menuPantalla;
+
     public GameObject[] personajes;
+
     public int iChar;
+
     public GameObject personajeBuscado;
+
     public int nivel = 1;
+
     public bool isPlaying = false;
+
     public int points = 0;
 
+    public void Awake()
+    {
+        menuPantalla.SetActive(true);
+    }
     private void Start()
     {
         if(GameController.instance == null)
@@ -32,29 +44,12 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(0);       
-        }
 
         Raycasting();
         
     }
 
-    public GameObject RandomCharactersLevel()
-    {
-        int cualquiera = Random.Range(0, personajes.Length);
-        while (cualquiera == iChar)
-        {
-            cualquiera = Random.Range(0, personajes.Length);
-        }
-
-        GameObject RandomChar = personajes[cualquiera];
-
-        return Instantiate(RandomChar);
-    }
-
-    public GameObject RandomCharactersWanted()
+    public GameObject RandomCharactersWanted() //Este es Maduro en otro pais
     {
         iChar = Random.Range(0, personajes.Length);
 
@@ -66,10 +61,27 @@ public class GameController : MonoBehaviour
         return personajeBuscado;
     }
 
+    public GameObject RandomCharactersLevel() // Estos son los mamaguevazos que te complican el nivel
+    {
+        int cualquiera = Random.Range(0, personajes.Length);
+        while (cualquiera == iChar)
+        {
+            cualquiera = Random.Range(0, personajes.Length);
+        }
+
+        //GameObject RandomChar = personajes[cualquiera];
+
+        return Instantiate(personajes[cualquiera]);
+    }
+
+    
+
     public void FullLevel()
     {
-        int hide = HidePoints.instance.RandomHidePoints();
-        personajeBuscado.transform.parent = HidePoints.instance.hidePoints[hide].transform;
+        //int hide = HidePoints.instance.RandomHidePoints();
+        GameObject escondite = HidePoints.instance.RandomHidePoints();
+        //personajeBuscado.transform.parent = HidePoints.instance.hidePoints[hide].transform;
+        personajeBuscado.transform.parent = escondite.transform;
         personajeBuscado.transform.localPosition = Vector3.zero;
         personajeBuscado.transform.localScale = Vector3.one;
         personajeBuscado.transform.LookAt(Camera.current.transform);
@@ -81,18 +93,46 @@ public class GameController : MonoBehaviour
     {
         for (int i = 0; i < (nivel*5)-1; i++)
         {
-            GameController.instance.personajes[i] = GameController.instance.RandomCharactersLevel();
+            /*GameController.instance.personajes[i] = GameController.instance.RandomCharactersLevel();
             GameController.instance.personajes[i].transform.parent = HidePoints.instance.hidePoints[HidePoints.instance.RandomHidePoints()].transform;
             GameController.instance.personajes[i].transform.localPosition = Vector3.zero;
-            GameController.instance.personajes[i].transform.LookAt(Camera.current.transform);
+            GameController.instance.personajes[i].transform.LookAt(Camera.main.transform);*/
+            GameObject personajes = RandomCharactersLevel();
+            GameObject escondites = HidePoints.instance.RandomHidePoints();
+            personajes.transform.parent = escondites.transform;
+            personajes.transform.localPosition = Vector3.zero;
+            personajes.transform.localScale = Vector3.one;
+            personajes.transform.LookAt(Camera.current.transform);
         }
     }
 
+    void Ganar()
+    {
+        isPlaying = false;
+        Debug.Log("Encontrado");
+        //nivel++;
+        Debug.Log(nivel);
+        points = points + 100;
+        Debug.Log(points);
+        PoPUpPoints.instance.popUpPoints.SetActive(true);
+        PoPUpPoints.instance.popUpWin.SetActive(true);
+        PoPUpPoints.instance.popUpLose.SetActive(false);
+    }
+
+    void Perdiste()
+    {
+        isPlaying = false;
+        PoPUpPoints.instance.popUpPoints.SetActive(true);
+        PoPUpPoints.instance.popUpLose.SetActive(true);
+        PoPUpPoints.instance.popUpWin.SetActive(false);
+    }
+
+    
     public void Raycasting()
     {
         if(isPlaying == true)
         {
-            Contrareloj.instance.contraReloj -= Time.deltaTime;
+            
             if ((Input.touchCount >= 1  && Input.GetTouch(0).phase == TouchPhase.Ended) || (Input.GetMouseButtonUp(0)))
             {
                 Vector3 pos = Input.mousePosition;
@@ -107,22 +147,12 @@ public class GameController : MonoBehaviour
                 {
                     if(hitinfo.transform.tag == ("Buscado"))
                     {
-                        Debug.Log("Encontrado");
-                        //nivel++;
-                        Debug.Log(nivel);
-                    points = points + 100;
-                    Debug.Log(points);
-                    PoPUpPoints.instance.popUpPoints.SetActive(true);
-                        PoPUpPoints.instance.popUpWin.SetActive(true);
-                        PoPUpPoints.instance.popUpLose.SetActive(false);
-                        isPlaying = false;                       
+                        Ganar();
                     }
 
                     if (hitinfo.transform.tag == ("Personajes"))
                     {
-                        Debug.Log("Perdiste");
-                    PoPUpPoints.instance.popUpLose.SetActive(true);
-                    Contrareloj.instance.contraReloj = Contrareloj.instance.contraReloj + 10f;
+                        Perdiste();
                     }
                 }
             }

@@ -69,6 +69,10 @@ public class WantedScreen : MonoBehaviour
 
     public void PositionOfCharacters()  //Condición para que aparezca el personaje en la posición deseada.
     {
+        if(spawnPosition.transform.childCount > 0)
+        {
+            Destroy(spawnPosition.transform.GetChild(0).gameObject);
+        }
         GameObject charac = GameController.instance.RandomCharactersWanted();  //Llama la instancia del GameController RandomCharacters.
         charac.transform.parent = spawnPosition.transform;               //Le dice al objeto del personaje a buscar donde va a aparecer.
         charac.transform.localPosition = Vector3.zero;                   //Le dice al objeto donde esta el personaje a buscar la posición.

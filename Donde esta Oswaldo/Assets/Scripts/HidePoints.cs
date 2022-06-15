@@ -7,6 +7,7 @@ public class HidePoints : MonoBehaviour
     public GameObject[] hidePoints;
     public int cantidadDeHidePoints;
     public static HidePoints instance;
+    
 
 
     private void Awake()
@@ -14,7 +15,7 @@ public class HidePoints : MonoBehaviour
         if (HidePoints.instance == null)
         {
             HidePoints.instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
 
         else
@@ -24,7 +25,7 @@ public class HidePoints : MonoBehaviour
     }
     void Start()
     {
-        RandomHidePoints();
+        
     }
 
     // Update is called once per frame
@@ -33,7 +34,7 @@ public class HidePoints : MonoBehaviour
         
     }
 
-    public int RandomHidePoints()
+    public GameObject RandomHidePoints()
     {
         cantidadDeHidePoints = Random.Range(0, hidePoints.Length);
 
@@ -41,7 +42,23 @@ public class HidePoints : MonoBehaviour
         {
             cantidadDeHidePoints = Random.Range(0, hidePoints.Length);
         }
-        return cantidadDeHidePoints;
+        return hidePoints[cantidadDeHidePoints];    
         
+    }
+
+    public void limpiarHidePoints()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i).childCount > 0)
+            {
+                Destroy(transform.GetChild(i).GetChild(0).gameObject);
+            }
+        }
+    }
+
+    public int GetNumberEscondite()
+    {
+        return transform.childCount;
     }
 }

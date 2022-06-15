@@ -15,7 +15,7 @@ public class PoPUpPoints : MonoBehaviour
     public GameObject popUpLose;
     public GameObject popUpWin;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (PoPUpPoints.instance == null)
         {
@@ -36,29 +36,36 @@ public class PoPUpPoints : MonoBehaviour
 
     public void NextLevel()
     {
+        HidePoints.instance.limpiarHidePoints();
         GameController.instance.nivel++;
+        if(GameController.instance.nivel * 5 > HidePoints.instance.GetNumberEscondite())
+        {
+            Debug.Log("Felicidades, ganaste");
+        }
+        else
+        {
+            popUpPoints.SetActive(false);
+            WantedScreen.instance.Mostrar();
+        }
+
+        popUpPoints.SetActive(false);
+        popUpWin.SetActive(false);
         SceneManager.LoadScene(Random.Range(1, 3));
-        popUpPoints.SetActive(false);
-        popUpWin.SetActive(true);
     }
 
-    public void ReloadLevelLivingRoom()
+    public void ReloadLevel()
     {
-        SceneManager.LoadScene(1);
+       
+        HidePoints.instance.limpiarHidePoints();
         popUpPoints.SetActive(false);
-    }
-
-    public void ReloadLevelExterior()
-    {
-        SceneManager.LoadScene(2);
-        popUpPoints.SetActive(false);
-
+        SceneManager.LoadScene(Random.Range(1, 3));
     }
 
     public void Back2Menu()
     {
+        HidePoints.instance.limpiarHidePoints();
+        popUpPoints.SetActive(false);
+        GameController.instance.nivel = 0;
         SceneManager.LoadScene(0);
-        popUpLose.SetActive(false);
-
     }
 }
