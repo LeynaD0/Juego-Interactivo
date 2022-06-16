@@ -38,26 +38,29 @@ public class PoPUpPoints : MonoBehaviour
     {
         HidePoints.instance.limpiarHidePoints();
         GameController.instance.nivel++;
-        if(GameController.instance.nivel * 5 > HidePoints.instance.GetNumberEscondite())
+        if(GameController.instance.nivel > 4)
         {
             Debug.Log("Felicidades, ganaste");
+            GameController.instance.nivel = 1;
+            popUpPoints.SetActive(false);
+            SceneManager.LoadScene(0);
         }
         else
         {
             popUpPoints.SetActive(false);
             WantedScreen.instance.Mostrar();
+            SceneManager.LoadScene(Random.Range(1, 3));
         }
 
-        popUpPoints.SetActive(false);
-        popUpWin.SetActive(false);
-        SceneManager.LoadScene(Random.Range(1, 3));
+        //popUpPoints.SetActive(false);
+        //popUpWin.SetActive(false);
+        //SceneManager.LoadScene(Random.Range(1, 3));
     }
 
     public void ReloadLevel()
     {
-       
-        HidePoints.instance.limpiarHidePoints();
         popUpPoints.SetActive(false);
+        HidePoints.instance.limpiarHidePoints();
         SceneManager.LoadScene(Random.Range(1, 3));
     }
 
@@ -65,7 +68,7 @@ public class PoPUpPoints : MonoBehaviour
     {
         HidePoints.instance.limpiarHidePoints();
         popUpPoints.SetActive(false);
-        GameController.instance.nivel = 0;
+        GameController.instance.nivel = 1;
         SceneManager.LoadScene(0);
     }
 }

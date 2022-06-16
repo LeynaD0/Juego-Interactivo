@@ -62,6 +62,7 @@ public class WantedScreen : MonoBehaviour
         {
             canvasHud.SetActive(true);
         }
+
         
         GameController.instance.FullLevel();
         GameController.instance.isPlaying = true;

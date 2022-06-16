@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
 
     public int nivel = 1;
 
+    public int division = 2;
+
     public bool isPlaying = false;
 
     public int points = 0;
@@ -44,7 +46,6 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-
         Raycasting();
         
     }
@@ -122,9 +123,16 @@ public class GameController : MonoBehaviour
     void Perdiste()
     {
         isPlaying = false;
+        Debug.Log("Ese no es");
         PoPUpPoints.instance.popUpPoints.SetActive(true);
         PoPUpPoints.instance.popUpLose.SetActive(true);
         PoPUpPoints.instance.popUpWin.SetActive(false);
+    }
+
+    void PowerUp()
+    {
+        Debug.Log("Has destruido la mitad");
+        //Destroy(transform.GetChild(RandomCharactersLevel(personajes)).GetChild(0).gameObject;
     }
 
     
@@ -153,6 +161,11 @@ public class GameController : MonoBehaviour
                     if (hitinfo.transform.tag == ("Personajes"))
                     {
                         Perdiste();
+                    }
+
+                    if (hitinfo.transform.tag == ("PowerUp"))
+                    {
+                        PowerUp();
                     }
                 }
             }

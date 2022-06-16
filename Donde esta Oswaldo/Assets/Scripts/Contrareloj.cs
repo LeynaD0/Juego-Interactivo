@@ -48,7 +48,5 @@ public class Contrareloj : MonoBehaviour
                 WantedScreen.instance.canvasHud.SetActive(false);
             }
         }
-
-        
     }
 }
