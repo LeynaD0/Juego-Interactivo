@@ -62,6 +62,15 @@ public class GameController : MonoBehaviour
         return personajeBuscado;
     }
 
+    public GameObject MismoPersonajeEnPausa()
+    {
+        personajeBuscado = personajes[iChar];
+        personajeBuscado = Instantiate(personajes[iChar]);
+
+        personajeBuscado.tag = "Buscado";
+
+        return personajeBuscado;
+    }
     public GameObject RandomCharactersLevel() // Estos son los mamaguevazos que te complican el nivel
     {
         int cualquiera = Random.Range(0, personajes.Length);
